@@ -3,25 +3,24 @@ import { useState, useEffect, useRef } from "react"
 import { useUIStore } from "@/lib/ui-store"
 import { Button } from "@/components/ui/button"
 
-const QUICK_CHIPS = ["Кто ты?", "Покажи арт", "Над чем работаешь?"]
+const QUICK_CHIPS = ["Наше меню", "Забронировать стол", "О ресторане"]
 
 const RESPONSES: Record<string, string> = {
-  "Кто ты?": "Я AI-помощник Алекса! Помогаю показать работы и рассказать о нем. Хочешь узнать больше?",
-  "Покажи арт":
-    "С удовольствием покажу работы Алекса! В них сочетаются цифровые и традиционные техники.",
-  "Над чем работаешь?":
-    "Сейчас в работе несколько проектов! Алекс занимается AI-приложениями и креативным кодингом.",
+  "Наше меню": "В La Fornace — авторские пиццы на тонком тесте, приготовленные в дровяной печи при 485°C. Каждый рецепт создан нашим шеф-поваром из Неаполя.",
+  "Забронировать стол": "С удовольствием! Откройте раздел «Бронирование» и выберите удобное время. Принимаем гостей ежедневно с 12:00 до 23:00.",
+  "О ресторане": "La Fornace — ресторан премиальной итальянской кухни. Наша философия: только живой огонь, только свежие продукты, только настоящий вкус Италии.",
 }
 
 const ACTION_RESPONSES: Record<string, { response: string; action: string }> = {
-  "открой арт": { response: "Открываю галерею!", action: "art" },
-  "покажи арт": { response: "Открываю раздел с артом!", action: "art" },
-  "открой резюме": { response: "Открываю резюме!", action: "resume" },
-  "покажи резюме": { response: "Вот резюме!", action: "resume" },
-  "открой обо мне": { response: "Открываю раздел обо мне!", action: "about" },
-  "покажи обо мне": { response: "Расскажу об Алексе!", action: "about" },
-  "открой статьи": { response: "Открываю статьи!", action: "writings" },
-  "покажи статьи": { response: "Вот статьи!", action: "writings" },
+  "открой меню": { response: "Открываю меню!", action: "art" },
+  "покажи меню": { response: "Вот наше меню!", action: "art" },
+  "наше меню": { response: "Открываю меню!", action: "art" },
+  "открой историю": { response: "Открываю историю ресторана!", action: "about" },
+  "о ресторане": { response: "Рассказываю о La Fornace!", action: "about" },
+  "открой бронирование": { response: "Открываю форму бронирования!", action: "resume" },
+  "забронировать стол": { response: "Открываю форму бронирования!", action: "resume" },
+  "открой отзывы": { response: "Открываю отзывы гостей!", action: "writings" },
+  "покажи отзывы": { response: "Вот что говорят наши гости!", action: "writings" },
 }
 
 type AppType = "about" | "resume" | "writings" | "art"
@@ -62,7 +61,7 @@ export function ChatPanel() {
     } else {
       // Default response for non-action messages
       const defaultResponse =
-        "Интересно! Я помогу изучить работы Алекса. Попробуй написать «открой арт» или «покажи резюме»!"
+        "Добро пожаловать в La Fornace! Напишите «наше меню», «о ресторане» или «забронировать стол» — я помогу."
       setMessages((prev) => [...prev, { text: userMessage, isUser: true }, { text: defaultResponse, isUser: false }])
     }
   }
@@ -73,8 +72,8 @@ export function ChatPanel() {
         {messages.map((msg, i) => (
           <div key={i} className={`flex ${msg.isUser ? "justify-end" : "justify-start"}`}>
             <div
-              className={`max-w-[80%] p-3 border-[3px] border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ${
-                msg.isUser ? "bg-[#FF2E63] text-white" : "bg-white text-black"
+              className={`max-w-[80%] p-3 border-[3px] border-[#c9a84c] shadow-[2px_2px_0px_0px_rgba(201,168,76,0.5)] ${
+                msg.isUser ? "bg-[#c9a84c] text-black" : "bg-[#1a1a1a] text-[#f5f0e8]"
               }`}
             >
               <p className="text-sm font-medium leading-tight">{msg.text}</p>
@@ -91,11 +90,11 @@ export function ChatPanel() {
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             placeholder="Напиши сообщение или команду..."
-            className="flex-1 p-3 border-[3px] border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] bg-white text-black font-medium text-sm focus:outline-none focus:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] focus:translate-x-[1px] focus:translate-y-[1px] transition-all"
+            className="flex-1 p-3 border-[3px] border-[#c9a84c] shadow-[2px_2px_0px_0px_rgba(201,168,76,0.3)] bg-[#1a1a1a] text-[#f5f0e8] font-medium text-sm focus:outline-none focus:shadow-[1px_1px_0px_0px_rgba(201,168,76,0.3)] focus:translate-x-[1px] focus:translate-y-[1px] transition-all placeholder:text-[#666]"
           />
           <Button
             type="submit"
-            className="bg-[#FF2E63] text-white border-[3px] border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px] transition-all font-bold px-4"
+            className="bg-[#c9a84c] text-black border-[3px] border-[#8b6914] shadow-[2px_2px_0px_0px_rgba(139,105,20,0.5)] hover:shadow-[1px_1px_0px_0px_rgba(139,105,20,0.5)] hover:translate-x-[1px] hover:translate-y-[1px] transition-all font-bold px-4"
           >
             Отправить
           </Button>
@@ -108,7 +107,7 @@ export function ChatPanel() {
           <Button
             key={chip}
             onClick={() => handleChipClick(chip)}
-            className="bg-white text-black border-[3px] border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px] transition-all font-bold text-xs px-3 py-2 h-auto"
+            className="bg-[#1a1a1a] text-[#c9a84c] border-[3px] border-[#c9a84c] shadow-[2px_2px_0px_0px_rgba(201,168,76,0.3)] hover:shadow-[1px_1px_0px_0px_rgba(201,168,76,0.3)] hover:translate-x-[1px] hover:translate-y-[1px] transition-all font-bold text-xs px-3 py-2 h-auto"
           >
             {chip}
           </Button>

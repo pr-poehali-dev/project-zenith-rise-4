@@ -7,9 +7,9 @@ export function PersonaToggle() {
   return (
     <Button
       onClick={() => setPersona(persona === "assistant" ? "alex" : "assistant")}
-      className="bg-white text-black border-[3px] border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px] transition-all font-bold px-4 py-2 focus:ring-4 focus:ring-[#FF2E63]"
+      className="bg-[#1a1a1a] text-[#c9a84c] border-[3px] border-[#c9a84c] shadow-[2px_2px_0px_0px_rgba(201,168,76,0.3)] hover:shadow-[1px_1px_0px_0px_rgba(201,168,76,0.3)] hover:translate-x-[1px] hover:translate-y-[1px] transition-all font-bold px-4 py-2 focus:ring-4 focus:ring-[#c9a84c]"
     >
-      {persona === "assistant" ? "Робот-помощник" : "Алекс"}
+      {persona === "assistant" ? "Консьерж" : "Шеф Лука"}
     </Button>
   )
 }

@@ -7,16 +7,16 @@ export default function HomePage() {
   return (
     <>
       {/* Landing Page - Fixed height, no scroll */}
-      <div className="h-screen bg-[#FAFAFA] flex flex-col items-center justify-center p-8 relative overflow-hidden">
-        {/* Neo-brutal grid background */}
+      <div className="h-screen bg-[#0a0a0a] flex flex-col items-center justify-center p-8 relative overflow-hidden">
+        {/* Dark grid background */}
         <div
-          className="absolute inset-0 opacity-[0.03]"
+          className="absolute inset-0 opacity-[0.06]"
           style={{
             backgroundImage: `
-              linear-gradient(to right, #000 1px, transparent 1px),
-              linear-gradient(to bottom, #000 1px, transparent 1px)
+              linear-gradient(to right, #c9a84c 1px, transparent 1px),
+              linear-gradient(to bottom, #c9a84c 1px, transparent 1px)
             `,
-            backgroundSize: "8px 8px",
+            backgroundSize: "60px 60px",
           }}
         />
 
@@ -32,7 +32,10 @@ export default function HomePage() {
           {/* AI Robot */}
           <div className="flex flex-col items-center space-y-4 mb-8">
             <AnimatedRobot />
-            <h1 className="text-4xl font-black text-center">Привет.</h1>
+            <div className="text-center">
+              <p className="text-[#c9a84c] font-semibold tracking-[0.3em] text-sm uppercase mb-1">Ресторан итальянской кухни</p>
+              <h1 className="text-5xl font-black text-center text-white" style={{fontFamily: "'Playfair Display', serif"}}>La Fornace</h1>
+            </div>
           </div>
 
           {/* Chat Panel */}

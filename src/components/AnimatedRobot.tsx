@@ -25,10 +25,10 @@ export function AnimatedRobot({ className = "", size = "lg" }: AnimatedRobotProp
 
     // Main eye reaction - intense glow
     if (mainEye) {
-      mainEye.style.boxShadow = "0 0 40px rgba(255, 46, 99, 1), inset 0 2px 10px rgba(0,0,0,0.8)"
+      mainEye.style.boxShadow = "0 0 40px rgba(201, 168, 76, 1), inset 0 2px 10px rgba(0,0,0,0.8)"
       mainEye.style.transform = "translateX(-50%) scale(1.1)"
       setTimeout(() => {
-        mainEye.style.boxShadow = "0 0 20px rgba(255, 46, 99, 0.3), inset 0 2px 10px rgba(0,0,0,0.8)"
+        mainEye.style.boxShadow = "0 0 20px rgba(201, 168, 76, 0.3), inset 0 2px 10px rgba(0,0,0,0.8)"
         mainEye.style.transform = "translateX(-50%) scale(1)"
       }, 400)
     }
@@ -36,9 +36,9 @@ export function AnimatedRobot({ className = "", size = "lg" }: AnimatedRobotProp
     // All indicators flash simultaneously
     indicators.forEach((indicator) => {
       indicator.style.background = "#ffffff"
-      indicator.style.boxShadow = "0 0 10px rgba(255, 255, 255, 0.8)"
+      indicator.style.boxShadow = "0 0 10px rgba(201, 168, 76, 0.8)"
       setTimeout(() => {
-        indicator.style.background = "#FF2E63"
+        indicator.style.background = "#c9a84c"
         indicator.style.boxShadow = "none"
       }, 200)
     })
